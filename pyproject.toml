@@ -1,0 +1,36 @@
+[project]
+name = "hello_redirect"
+version = "0.1.0"
+description = "a service instance that fits the user's verifiable identity"
+authors = [{ name = "davidrichards" }]
+license = { text = "MIT" }
+readme = "README.md"
+requires-python = ">=3.10"
+
+dependencies = [
+    "docker",
+    "fastapi",
+    "uvicorn",
+    "pyjwt",
+    "cryptography",
+]
+
+[project.urls]
+Homepage = "https://github.com/davidrichards/hello_redirect"
+Repository = "https://github.com/davidrichards/hello_redirect"
+Issues = "https://github.com/davidrichards/hello_redirect/issues"
+
+[project.scripts]
+hello_redirect = "hello_redirect.entry_points.cli.__main__:app"
+
+[build-system]
+requires = ["setuptools>=65", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+

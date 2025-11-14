@@ -1,0 +1,45 @@
+services:
+  gateway:
+    build:
+      context: .
+      dockerfile: Dockerfile.gateway
+    ports:
+      - "8000:8000"
+    environment:
+      - JWT_SIGNING_SECRET=dev-gateway-secret-change-in-prod
+      - FERNET_KEY=ifwLVC8acKq88VJv0Mpo5P17COHVcfpSVZL1PAPZMpE=
+      - USE_DOCKER_ALLOCATOR=false
+      - RUNTIME_HOST=runtime
+      - RUNTIME_PORT=8001
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock  # Allow gateway to manage containers
+    networks:
+      - hello-redirect-network
+    depends_on:
+      - runtime
+    healthcheck:
+      test: ["CMD", "python", "-c", "import sys,urllib.request; code=urllib.request.urlopen('http://127.0.0.1:8000/health').getcode(); sys.exit(0 if code==200 else 1)"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  runtime:
+    build:
+      context: .
+      dockerfile: Dockerfile.runtime
+    ports:
+      - "8001:8001"
+    environment:
+      - JWT_SIGNING_SECRET=dev-gateway-secret-change-in-prod
+      - FERNET_KEY=ifwLVC8acKq88VJv0Mpo5P17COHVcfpSVZL1PAPZMpE=
+    networks:
+      - hello-redirect-network
+    healthcheck:
+      test: ["CMD", "python", "-c", "import sys,urllib.request; code=urllib.request.urlopen('http://127.0.0.1:8001/health').getcode(); sys.exit(0 if code==200 else 1)"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+networks:
+  hello-redirect-network:
+    driver: bridge

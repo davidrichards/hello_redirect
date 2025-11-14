@@ -1,0 +1,7 @@
+docker
+fastapi
+uvicorn
+pyjwt
+cryptography
+requests
+

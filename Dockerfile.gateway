@@ -1,0 +1,15 @@
+# Dockerfile.gateway
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Copy gateway application files
+COPY gateway_app.py docker_allocator.py runtime_registry.py security.py simple_allocator.py ./
+COPY requirements.txt ./
+
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Expose the gateway port (container internal)
+EXPOSE 8000
+CMD ["uvicorn", "gateway_app:app", "--host", "0.0.0.0", "--port", "8000"]

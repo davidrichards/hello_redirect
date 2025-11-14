@@ -1,0 +1,7 @@
+name: "hello_redirect"
+version: "0.1.0"
+description: "a service instance that fits the user's verifiable identity"
+port_base: 9000
+port_offset: 0
+git_repo: "https://github.com/davidrichards/hello_redirect"
+git_host_username: "davidrichards"

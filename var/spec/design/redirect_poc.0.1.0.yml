@@ -1,0 +1,30 @@
+id: e1444474-cd55-44c6-a645-d0b5068acf3e
+created_at: '2025-11-14T14:30:59.284613+00:00'
+updated_at: '2025-11-14T14:30:59.284985+00:00'
+short_key: redirect_poc
+name: redirect_poc
+description: 'A basic Fast API service that:
+
+  - provides an entry router
+
+  - produces JWE + JWS encryption
+
+  - redirects and validates the response
+
+
+  This gives me a way to identify a user, provide some basic feature choices, and
+  give them access to a container designed for their immediate use.'
+type: feature
+signature: null
+invocation: null
+validation: null
+estimated_cost: null
+tags: []
+dependencies: []
+similar_to: null
+template: null
+execution_required: false
+validation_required: true
+execution_optional: false
+meta: {}
+version: 0.1.0
