@@ -2,7 +2,7 @@
 
 A proof-of-concept demonstrating secure token-based redirection between a gateway service and runtime containers using JWS + JWE-style nested encryption.
 
-[Demo Video(https://youtube.com/live/Db2MKtGcfyc)
+[Demo Video](https://youtube.com/live/Db2MKtGcfyc)
 
 This is a self-documenting tool. Do things. Be grounded. Ask questions. Validate answers. Have fun.
 
